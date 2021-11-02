@@ -2,7 +2,7 @@
 
 ##################################################################################################
 # Trivial example of mint and burn of a contract on the florencenet Tezos testnet.
-contract_id='KT1XtDdQcB6WCtnUsv8Da7fRNVN7teMunsvS' # address of FA2 contract
+contract_id='KT1WXk8HftYWJ4ntTrub2id5Saj3qcwH6yWZ' # address of FA2 contract
 owner='tz1RjonN5qEJM8cZhKcfGyoEqhw1FNB4ti6w' # address of owner
 privkey='edsk4LzAuuQF1FkFHV5qXmpL8a5YNtJh1pTtkAYjAVBKCSAbp6LCCD' # private key of owner
 #
@@ -13,7 +13,7 @@ def admin_account():
     ''' Return an initialised pytezos object using the admin key defined in this file '''
     return pytezos.using(
         key = privkey,
-        shell = 'http://florence.newby.org:8732') # My private node, can replace with a public one
+        shell = 'http://granada.newby.org:8732') # My private node, can replace with a public one
 
 def contract():
     ''' Return an initialised contract object for the FA2 contract with id above'''
@@ -25,10 +25,10 @@ def initialize():
     account = admin_account()
     operations = []
     results = []
-    for i in range(1,50):
+    for i in range(50,51):
         name = f"token-{i}"
-        count = 1
-        symbol = f"TKN{i}"
+        count = 50000
+        symbol = f"TVIKTOR{i}"
         token_id = i
         operations.append(contract_.create_token(token_id,
                                                 {"name": name.encode('utf-8'),
